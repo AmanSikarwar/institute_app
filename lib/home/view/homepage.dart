@@ -1,122 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart' as fp;
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:institute_app/clubs/clubs.dart';
-import 'package:institute_app/data/auth/firebase_auth_repo.dart';
-import 'package:institute_app/domain/auth/models/auth_user.dart';
-import 'package:institute_app/feed/feed.dart';
-import 'package:institute_app/profile/profile.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  static const routeName = '/';
-
-  @override
-  HomePageState createState() => HomePageState();
-}
-
-class HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  late List<Widget> _pages; // Declare _pages variable
-
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          children: [
-            _pages[_currentIndex],
-          ],
-        ),
-        bottomNavigationBar: GNav(
-          backgroundColor: Colors.black,
-          color: Colors.white,
-          rippleColor: Colors.white,
-          activeColor: Colors.white,
-          tabBackgroundColor: Colors.grey.shade800,
-          gap: 5,
-          tabs: const [
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.feed,
-              text: 'Feed',
-            ),
-            GButton(
-              icon: Icons.groups,
-              text: 'Clubs',
-            ),
-            GButton(
-              icon: Icons.account_circle,
-              text: 'Profile',
-            ),
-          ],
-          selectedIndex: _currentIndex,
-          onTabChange: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-        ),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          AppBar(
+            title: const Text('Home'),
+          ),
+          const WelcomeCard(),
+        ],
       ),
     );
   }
 }
 
-class HomePageContent extends StatelessWidget {
-  const HomePageContent({required this.getData, super.key});
-  final GetData getData;
+
+class WelcomeCard extends StatelessWidget {
+  const WelcomeCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final authUser = getData.authRepo.getSignedInUser().getOrElse(
-          () => AuthUser(id: '', name: '', email: ''),
-        );
-    return Column(
-      children: [
-        GreetingCard(name: authUser.name),
-        const Expanded(
-          child: Center(
-            child: Text('Home Page Content'),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class GreetingCard extends StatelessWidget {
-  const GreetingCard({required this.name, super.key});
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+    return const Center(
       child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Welcome, $name !',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading:  Icon(Icons.account_circle_rounded),
+              title: Text('Welcome User'),
+              subtitle: Text('Get Started'),
+            ),
+          ],
         ),
       ),
     );

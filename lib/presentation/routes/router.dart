@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
+import 'package:institute_app/clubs/clubs.dart';
+import 'package:institute_app/feed/view/feed_page.dart';
+import 'package:institute_app/home/view/homepage.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
 
@@ -42,26 +45,30 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
         selectedIndex: navigationShell.currentIndex,
         destinations: const <Widget>[
           NavigationDestination(
-              label: 'Home',
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),),
+            label: 'Home',
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+          ),
           NavigationDestination(
             label: 'Feed',
             icon: Icon(Icons.feed_outlined),
             selectedIcon: Icon(Icons.feed),
           ),
           NavigationDestination(
-              label: 'Clubs',
-              icon: Icon(Icons.groups_outlined),
-              selectedIcon: Icon(Icons.groups),),
+            label: 'Clubs',
+            icon: Icon(Icons.groups_outlined),
+            selectedIcon: Icon(Icons.groups),
+          ),
           NavigationDestination(
-              label: 'Updates',
-              icon: Icon(Icons.notifications_outlined),
-              selectedIcon: Icon(Icons.notifications),),
+            label: 'Updates',
+            icon: Icon(Icons.notifications_outlined),
+            selectedIcon: Icon(Icons.notifications),
+          ),
           NavigationDestination(
-              label: 'Profile',
-              icon: Icon(Icons.person_outlined),
-              selectedIcon: Icon(Icons.person),),
+            label: 'Profile',
+            icon: Icon(Icons.person_outlined),
+            selectedIcon: Icon(Icons.person),
+          ),
         ],
         onDestinationSelected: _goBranch,
       ),
@@ -141,7 +148,7 @@ final router = GoRouter(
             GoRoute(
               path: '/home',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Home', detailsPath: '/home/details'),
+                child: HomePage(),
               ),
               routes: [
                 // child route
@@ -160,7 +167,7 @@ final router = GoRouter(
             GoRoute(
               path: '/feed',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Feed', detailsPath: '/feed/details'),
+                child: FeedPage(),
               ),
               routes: [
                 GoRoute(
@@ -178,13 +185,38 @@ final router = GoRouter(
             GoRoute(
               path: '/clubs',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Clubs', detailsPath: '/clubs/details'),
+                child: ClubsPage(),
               ),
               routes: [
                 GoRoute(
-                  path: 'details',
+                  path: 'councils',
                   builder: (context, state) =>
-                      const DetailsScreen(label: 'Clubs'),
+                      const Councils(),
+                ),
+                GoRoute(
+                  path: 'tech',
+                  builder: (context, state) =>
+                      const TechClubs(),
+                ),
+                GoRoute(
+                  path: 'research',
+                  builder: (context, state) =>
+                  const ResearchSoc(),
+                ),
+                GoRoute(
+                  path: 'cult',
+                  builder: (context, state) =>
+                  const CultClubs(),
+                ),
+                GoRoute(
+                  path: 'lit',
+                  builder: (context, state) =>
+                  const LitClubs(),
+                ),
+                GoRoute(
+                  path: 'sports',
+                  builder: (context, state) =>
+                  const SportsSoc(),
                 ),
               ],
             ),
@@ -196,7 +228,8 @@ final router = GoRouter(
             GoRoute(
               path: '/updates',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Updates', detailsPath: '/updates/details'),
+                child: RootScreen(
+                    label: 'Updates', detailsPath: '/updates/details',),
               ),
               routes: [
                 GoRoute(
@@ -214,7 +247,8 @@ final router = GoRouter(
             GoRoute(
               path: '/profile',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Profile', detailsPath: '/profile/details'),
+                child: RootScreen(
+                    label: 'Profile', detailsPath: '/profile/details',),
               ),
               routes: [
                 GoRoute(
