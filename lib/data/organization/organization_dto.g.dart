@@ -120,6 +120,11 @@ abstract class OrganizationDtoDocumentReference
     return _$OrganizationDtoCollectionReference(reference.firestore);
   }
 
+  late final OrganizationMemberDtoCollectionReference members =
+      _$OrganizationMemberDtoCollectionReference(
+    reference,
+  );
+
   @override
   Stream<OrganizationDtoDocumentSnapshot> snapshots();
 
@@ -200,6 +205,11 @@ class _$OrganizationDtoDocumentReference extends FirestoreDocumentReference<
   OrganizationDtoCollectionReference get parent {
     return _$OrganizationDtoCollectionReference(reference.firestore);
   }
+
+  late final OrganizationMemberDtoCollectionReference members =
+      _$OrganizationMemberDtoCollectionReference(
+    reference,
+  );
 
   @override
   Stream<OrganizationDtoDocumentSnapshot> snapshots() {
@@ -2531,6 +2541,1188 @@ class OrganizationDtoQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class OrganizationMemberDtoCollectionReference
+    implements
+        OrganizationMemberDtoQuery,
+        FirestoreCollectionReference<OrganizationMemberDto,
+            OrganizationMemberDtoQuerySnapshot> {
+  factory OrganizationMemberDtoCollectionReference(
+    DocumentReference<OrganizationDto> parent,
+  ) = _$OrganizationMemberDtoCollectionReference;
+
+  static OrganizationMemberDto fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return OrganizationMemberDto.fromJson(
+        {'id': snapshot.id, ...?snapshot.data()});
+  }
+
+  static Map<String, Object?> toFirestore(
+    OrganizationMemberDto value,
+    SetOptions? options,
+  ) {
+    return {...value.toJson()}..remove('id');
+  }
+
+  @override
+  CollectionReference<OrganizationMemberDto> get reference;
+
+  /// A reference to the containing [OrganizationDtoDocumentReference] if this is a subcollection.
+  OrganizationDtoDocumentReference get parent;
+
+  @override
+  OrganizationMemberDtoDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<OrganizationMemberDtoDocumentReference> add(
+      OrganizationMemberDto value);
+}
+
+class _$OrganizationMemberDtoCollectionReference
+    extends _$OrganizationMemberDtoQuery
+    implements OrganizationMemberDtoCollectionReference {
+  factory _$OrganizationMemberDtoCollectionReference(
+    DocumentReference<OrganizationDto> parent,
+  ) {
+    return _$OrganizationMemberDtoCollectionReference._(
+      OrganizationDtoDocumentReference(parent),
+      parent.collection('members').withConverter(
+            fromFirestore:
+                OrganizationMemberDtoCollectionReference.fromFirestore,
+            toFirestore: OrganizationMemberDtoCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$OrganizationMemberDtoCollectionReference._(
+    this.parent,
+    CollectionReference<OrganizationMemberDto> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final OrganizationDtoDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<OrganizationMemberDto> get reference =>
+      super.reference as CollectionReference<OrganizationMemberDto>;
+
+  @override
+  OrganizationMemberDtoDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return OrganizationMemberDtoDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<OrganizationMemberDtoDocumentReference> add(
+      OrganizationMemberDto value) {
+    return reference
+        .add(value)
+        .then((ref) => OrganizationMemberDtoDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$OrganizationMemberDtoCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class OrganizationMemberDtoDocumentReference
+    extends FirestoreDocumentReference<OrganizationMemberDto,
+        OrganizationMemberDtoDocumentSnapshot> {
+  factory OrganizationMemberDtoDocumentReference(
+          DocumentReference<OrganizationMemberDto> reference) =
+      _$OrganizationMemberDtoDocumentReference;
+
+  DocumentReference<OrganizationMemberDto> get reference;
+
+  /// A reference to the [OrganizationMemberDtoCollectionReference] containing this document.
+  OrganizationMemberDtoCollectionReference get parent {
+    return _$OrganizationMemberDtoCollectionReference(
+      reference.parent.parent!.withConverter<OrganizationDto>(
+        fromFirestore: OrganizationDtoCollectionReference.fromFirestore,
+        toFirestore: OrganizationDtoCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<OrganizationMemberDtoDocumentSnapshot> snapshots();
+
+  @override
+  Future<OrganizationMemberDtoDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    bool isAdmin,
+    FieldValue isAdminFieldValue,
+    String role,
+    FieldValue roleFieldValue,
+    Map<String, dynamic> permissions,
+    FieldValue permissionsFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    bool isAdmin,
+    FieldValue isAdminFieldValue,
+    String role,
+    FieldValue roleFieldValue,
+    Map<String, dynamic> permissions,
+    FieldValue permissionsFieldValue,
+  });
+}
+
+class _$OrganizationMemberDtoDocumentReference
+    extends FirestoreDocumentReference<OrganizationMemberDto,
+        OrganizationMemberDtoDocumentSnapshot>
+    implements OrganizationMemberDtoDocumentReference {
+  _$OrganizationMemberDtoDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<OrganizationMemberDto> reference;
+
+  /// A reference to the [OrganizationMemberDtoCollectionReference] containing this document.
+  OrganizationMemberDtoCollectionReference get parent {
+    return _$OrganizationMemberDtoCollectionReference(
+      reference.parent.parent!.withConverter<OrganizationDto>(
+        fromFirestore: OrganizationDtoCollectionReference.fromFirestore,
+        toFirestore: OrganizationDtoCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<OrganizationMemberDtoDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(OrganizationMemberDtoDocumentSnapshot._);
+  }
+
+  @override
+  Future<OrganizationMemberDtoDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(OrganizationMemberDtoDocumentSnapshot._);
+  }
+
+  @override
+  Future<OrganizationMemberDtoDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction
+        .get(reference)
+        .then(OrganizationMemberDtoDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? isAdmin = _sentinel,
+    FieldValue? isAdminFieldValue,
+    Object? role = _sentinel,
+    FieldValue? roleFieldValue,
+    Object? permissions = _sentinel,
+    FieldValue? permissionsFieldValue,
+  }) async {
+    assert(
+      isAdmin == _sentinel || isAdminFieldValue == null,
+      "Cannot specify both isAdmin and isAdminFieldValue",
+    );
+    assert(
+      role == _sentinel || roleFieldValue == null,
+      "Cannot specify both role and roleFieldValue",
+    );
+    assert(
+      permissions == _sentinel || permissionsFieldValue == null,
+      "Cannot specify both permissions and permissionsFieldValue",
+    );
+    final json = {
+      if (isAdmin != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson.isAdmin(isAdmin as bool),
+      if (isAdminFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!: isAdminFieldValue,
+      if (role != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['role']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson.role(role as String),
+      if (roleFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['role']!: roleFieldValue,
+      if (permissions != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(permissions as Map<String, dynamic>),
+      if (permissionsFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!:
+            permissionsFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? isAdmin = _sentinel,
+    FieldValue? isAdminFieldValue,
+    Object? role = _sentinel,
+    FieldValue? roleFieldValue,
+    Object? permissions = _sentinel,
+    FieldValue? permissionsFieldValue,
+  }) {
+    assert(
+      isAdmin == _sentinel || isAdminFieldValue == null,
+      "Cannot specify both isAdmin and isAdminFieldValue",
+    );
+    assert(
+      role == _sentinel || roleFieldValue == null,
+      "Cannot specify both role and roleFieldValue",
+    );
+    assert(
+      permissions == _sentinel || permissionsFieldValue == null,
+      "Cannot specify both permissions and permissionsFieldValue",
+    );
+    final json = {
+      if (isAdmin != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson.isAdmin(isAdmin as bool),
+      if (isAdminFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!: isAdminFieldValue,
+      if (role != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['role']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson.role(role as String),
+      if (roleFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['role']!: roleFieldValue,
+      if (permissions != _sentinel)
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!:
+            _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(permissions as Map<String, dynamic>),
+      if (permissionsFieldValue != null)
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!:
+            permissionsFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is OrganizationMemberDtoDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class OrganizationMemberDtoQuery
+    implements
+        QueryReference<OrganizationMemberDto,
+            OrganizationMemberDtoQuerySnapshot> {
+  @override
+  OrganizationMemberDtoQuery limit(int limit);
+
+  @override
+  OrganizationMemberDtoQuery limitToLast(int limit);
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  OrganizationMemberDtoQuery orderByFieldPath(
+    FieldPath fieldPath, {
+    bool descending = false,
+    Object? startAt,
+    Object? startAfter,
+    Object? endAt,
+    Object? endBefore,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  OrganizationMemberDtoQuery whereFieldPath(
+    FieldPath fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationMemberDtoQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  OrganizationMemberDtoQuery whereIsAdmin({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  });
+  OrganizationMemberDtoQuery whereRole({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  OrganizationMemberDtoQuery wherePermissions({
+    Map<String, dynamic>? isEqualTo,
+    Map<String, dynamic>? isNotEqualTo,
+    Map<String, dynamic>? isLessThan,
+    Map<String, dynamic>? isLessThanOrEqualTo,
+    Map<String, dynamic>? isGreaterThan,
+    Map<String, dynamic>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<Map<String, dynamic>>? whereIn,
+    List<Map<String, dynamic>>? whereNotIn,
+  });
+
+  OrganizationMemberDtoQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  OrganizationMemberDtoQuery orderByIsAdmin({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  OrganizationMemberDtoQuery orderByRole({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  OrganizationMemberDtoQuery orderByPermissions({
+    bool descending = false,
+    Map<String, dynamic> startAt,
+    Map<String, dynamic> startAfter,
+    Map<String, dynamic> endAt,
+    Map<String, dynamic> endBefore,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$OrganizationMemberDtoQuery extends QueryReference<OrganizationMemberDto,
+    OrganizationMemberDtoQuerySnapshot> implements OrganizationMemberDtoQuery {
+  _$OrganizationMemberDtoQuery(
+    this._collection, {
+    required Query<OrganizationMemberDto> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<OrganizationMemberDtoQuerySnapshot> snapshots(
+      [SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(OrganizationMemberDtoQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<OrganizationMemberDtoQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(OrganizationMemberDtoQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  OrganizationMemberDtoQuery limit(int limit) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationMemberDtoQuery limitToLast(int limit) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery orderByFieldPath(
+    FieldPath fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery whereFieldPath(
+    FieldPath fieldPath, {
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery whereDocumentId({
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery whereIsAdmin({
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  }) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isEqualTo as bool)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isNotEqualTo as bool)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isLessThan as bool)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isLessThanOrEqualTo as bool)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isGreaterThan as bool)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .isAdmin(isGreaterThanOrEqualTo as bool)
+            : null,
+        isNull: isNull,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationMemberDtoImplPerFieldToJson.isAdmin(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationMemberDtoImplPerFieldToJson.isAdmin(e)),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery whereRole({
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationMemberDtoImplFieldMap['role']!,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .role(isGreaterThanOrEqualTo as String)
+            : null,
+        isNull: isNull,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationMemberDtoImplPerFieldToJson.role(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationMemberDtoImplPerFieldToJson.role(e)),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery wherePermissions({
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
+    bool? isNull,
+    List<Map<String, dynamic>>? whereIn,
+    List<Map<String, dynamic>>? whereNotIn,
+  }) {
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isEqualTo as Map<String, dynamic>)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isNotEqualTo as Map<String, dynamic>)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isLessThan as Map<String, dynamic>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isLessThanOrEqualTo as Map<String, dynamic>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isGreaterThan as Map<String, dynamic>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationMemberDtoImplPerFieldToJson
+                .permissions(isGreaterThanOrEqualTo as Map<String, dynamic>)
+            : null,
+        isNull: isNull,
+        whereIn: whereIn?.map(
+            (e) => _$$OrganizationMemberDtoImplPerFieldToJson.permissions(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$$OrganizationMemberDtoImplPerFieldToJson.permissions(e)),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery orderByIsAdmin({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$$OrganizationMemberDtoImplFieldMap['isAdmin']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery orderByRole({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$$OrganizationMemberDtoImplFieldMap['role']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  OrganizationMemberDtoQuery orderByPermissions({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    OrganizationMemberDtoDocumentSnapshot? startAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endAtDocument,
+    OrganizationMemberDtoDocumentSnapshot? endBeforeDocument,
+    OrganizationMemberDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$$OrganizationMemberDtoImplFieldMap['permissions']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$OrganizationMemberDtoQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$OrganizationMemberDtoQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class OrganizationMemberDtoDocumentSnapshot
+    extends FirestoreDocumentSnapshot<OrganizationMemberDto> {
+  OrganizationMemberDtoDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<OrganizationMemberDto> snapshot;
+
+  @override
+  OrganizationMemberDtoDocumentReference get reference {
+    return OrganizationMemberDtoDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final OrganizationMemberDto? data;
+}
+
+class OrganizationMemberDtoQuerySnapshot extends FirestoreQuerySnapshot<
+    OrganizationMemberDto, OrganizationMemberDtoQueryDocumentSnapshot> {
+  OrganizationMemberDtoQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory OrganizationMemberDtoQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<OrganizationMemberDto> snapshot,
+  ) {
+    final docs = snapshot.docs
+        .map(OrganizationMemberDtoQueryDocumentSnapshot._)
+        .toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        OrganizationMemberDtoDocumentSnapshot._,
+      );
+    }).toList();
+
+    return OrganizationMemberDtoQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<OrganizationMemberDtoDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    OrganizationMemberDtoDocumentSnapshot Function(DocumentSnapshot<T> doc)
+        decodeDoc,
+  ) {
+    return FirestoreDocumentChange<OrganizationMemberDtoDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<OrganizationMemberDto> snapshot;
+
+  @override
+  final List<OrganizationMemberDtoQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<OrganizationMemberDtoDocumentSnapshot>>
+      docChanges;
+}
+
+class OrganizationMemberDtoQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<OrganizationMemberDto>
+    implements OrganizationMemberDtoDocumentSnapshot {
+  OrganizationMemberDtoQueryDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<OrganizationMemberDto> snapshot;
+
+  @override
+  final OrganizationMemberDto data;
+
+  @override
+  OrganizationMemberDtoDocumentReference get reference {
+    return OrganizationMemberDtoDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -2612,4 +3804,41 @@ Map<String, dynamic> _$$OrganizationDtoImplToJson(
       'creatorId': instance.creatorId,
       'parentId': instance.parentId,
       'childrenIds': instance.childrenIds,
+    };
+
+_$OrganizationMemberDtoImpl _$$OrganizationMemberDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrganizationMemberDtoImpl(
+      id: json['id'] as String,
+      isAdmin: json['isAdmin'] as bool,
+      role: json['role'] as String,
+      permissions: json['permissions'] as Map<String, dynamic>,
+    );
+
+const _$$OrganizationMemberDtoImplFieldMap = <String, String>{
+  'id': 'id',
+  'isAdmin': 'isAdmin',
+  'role': 'role',
+  'permissions': 'permissions',
+};
+
+// ignore: unused_element
+abstract class _$$OrganizationMemberDtoImplPerFieldToJson {
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? isAdmin(bool instance) => instance;
+  // ignore: unused_element
+  static Object? role(String instance) => instance;
+  // ignore: unused_element
+  static Object? permissions(Map<String, dynamic> instance) => instance;
+}
+
+Map<String, dynamic> _$$OrganizationMemberDtoImplToJson(
+        _$OrganizationMemberDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'isAdmin': instance.isAdmin,
+      'role': instance.role,
+      'permissions': instance.permissions,
     };

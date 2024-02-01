@@ -426,3 +426,234 @@ abstract class _OrganizationDto extends OrganizationDto {
   _$$OrganizationDtoImplCopyWith<_$OrganizationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+OrganizationMemberDto _$OrganizationMemberDtoFromJson(
+    Map<String, dynamic> json) {
+  return _OrganizationMemberDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OrganizationMemberDto {
+  @Id()
+  String get id => throw _privateConstructorUsedError;
+  bool get isAdmin => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+  Map<String, dynamic> get permissions => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OrganizationMemberDtoCopyWith<OrganizationMemberDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OrganizationMemberDtoCopyWith<$Res> {
+  factory $OrganizationMemberDtoCopyWith(OrganizationMemberDto value,
+          $Res Function(OrganizationMemberDto) then) =
+      _$OrganizationMemberDtoCopyWithImpl<$Res, OrganizationMemberDto>;
+  @useResult
+  $Res call(
+      {@Id() String id,
+      bool isAdmin,
+      String role,
+      Map<String, dynamic> permissions});
+}
+
+/// @nodoc
+class _$OrganizationMemberDtoCopyWithImpl<$Res,
+        $Val extends OrganizationMemberDto>
+    implements $OrganizationMemberDtoCopyWith<$Res> {
+  _$OrganizationMemberDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? isAdmin = null,
+    Object? role = null,
+    Object? permissions = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAdmin: null == isAdmin
+          ? _value.isAdmin
+          : isAdmin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+      permissions: null == permissions
+          ? _value.permissions
+          : permissions // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OrganizationMemberDtoImplCopyWith<$Res>
+    implements $OrganizationMemberDtoCopyWith<$Res> {
+  factory _$$OrganizationMemberDtoImplCopyWith(
+          _$OrganizationMemberDtoImpl value,
+          $Res Function(_$OrganizationMemberDtoImpl) then) =
+      __$$OrganizationMemberDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@Id() String id,
+      bool isAdmin,
+      String role,
+      Map<String, dynamic> permissions});
+}
+
+/// @nodoc
+class __$$OrganizationMemberDtoImplCopyWithImpl<$Res>
+    extends _$OrganizationMemberDtoCopyWithImpl<$Res,
+        _$OrganizationMemberDtoImpl>
+    implements _$$OrganizationMemberDtoImplCopyWith<$Res> {
+  __$$OrganizationMemberDtoImplCopyWithImpl(_$OrganizationMemberDtoImpl _value,
+      $Res Function(_$OrganizationMemberDtoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? isAdmin = null,
+    Object? role = null,
+    Object? permissions = null,
+  }) {
+    return _then(_$OrganizationMemberDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAdmin: null == isAdmin
+          ? _value.isAdmin
+          : isAdmin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+      permissions: null == permissions
+          ? _value._permissions
+          : permissions // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OrganizationMemberDtoImpl extends _OrganizationMemberDto
+    with DiagnosticableTreeMixin {
+  _$OrganizationMemberDtoImpl(
+      {@Id() required this.id,
+      required this.isAdmin,
+      required this.role,
+      required final Map<String, dynamic> permissions})
+      : _permissions = permissions,
+        super._();
+
+  factory _$OrganizationMemberDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrganizationMemberDtoImplFromJson(json);
+
+  @override
+  @Id()
+  final String id;
+  @override
+  final bool isAdmin;
+  @override
+  final String role;
+  final Map<String, dynamic> _permissions;
+  @override
+  Map<String, dynamic> get permissions {
+    if (_permissions is EqualUnmodifiableMapView) return _permissions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_permissions);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OrganizationMemberDto(id: $id, isAdmin: $isAdmin, role: $role, permissions: $permissions)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OrganizationMemberDto'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('isAdmin', isAdmin))
+      ..add(DiagnosticsProperty('role', role))
+      ..add(DiagnosticsProperty('permissions', permissions));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrganizationMemberDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
+            (identical(other.role, role) || other.role == role) &&
+            const DeepCollectionEquality()
+                .equals(other._permissions, _permissions));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, isAdmin, role,
+      const DeepCollectionEquality().hash(_permissions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrganizationMemberDtoImplCopyWith<_$OrganizationMemberDtoImpl>
+      get copyWith => __$$OrganizationMemberDtoImplCopyWithImpl<
+          _$OrganizationMemberDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrganizationMemberDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OrganizationMemberDto extends OrganizationMemberDto {
+  factory _OrganizationMemberDto(
+          {@Id() required final String id,
+          required final bool isAdmin,
+          required final String role,
+          required final Map<String, dynamic> permissions}) =
+      _$OrganizationMemberDtoImpl;
+  _OrganizationMemberDto._() : super._();
+
+  factory _OrganizationMemberDto.fromJson(Map<String, dynamic> json) =
+      _$OrganizationMemberDtoImpl.fromJson;
+
+  @override
+  @Id()
+  String get id;
+  @override
+  bool get isAdmin;
+  @override
+  String get role;
+  @override
+  Map<String, dynamic> get permissions;
+  @override
+  @JsonKey(ignore: true)
+  _$$OrganizationMemberDtoImplCopyWith<_$OrganizationMemberDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
