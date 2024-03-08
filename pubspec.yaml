@@ -15,7 +15,7 @@ dependencies:
   fast_immutable_collections: ^10.1.0
   firebase_auth: ^4.16.0
   firebase_core: ^2.24.2
-  firebase_storage: ^11.6.0
+  firebase_storage: ^11.6.9
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
