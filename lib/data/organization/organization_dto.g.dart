@@ -506,6 +506,182 @@ abstract class OrganizationDtoQuery
   @override
   OrganizationDtoQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  OrganizationDtoQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereAbout({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereSortDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereLogo({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereWebsite({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereEmail({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereUpdatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereCreatorId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereParentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrganizationDtoQuery whereChildrenIds({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -527,181 +703,16 @@ abstract class OrganizationDtoQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   OrganizationDtoQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     OrganizationDtoDocumentSnapshot? startAtDocument,
     OrganizationDtoDocumentSnapshot? endAtDocument,
     OrganizationDtoDocumentSnapshot? endBeforeDocument,
     OrganizationDtoDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  OrganizationDtoQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  OrganizationDtoQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereAbout({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereSortDescription({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereLogo({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereWebsite({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereEmail({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereCreatedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  OrganizationDtoQuery whereUpdatedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  OrganizationDtoQuery whereCreatorId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrganizationDtoQuery whereParentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  });
-  OrganizationDtoQuery whereChildrenIds({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
   });
 
   OrganizationDtoQuery orderByDocumentId({
@@ -895,8 +906,639 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
+  OrganizationDtoQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereName({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['name']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.name(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.name(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.name(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .name(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.name(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .name(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.name(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.name(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereAbout({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['about']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.about(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.about(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.about(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .about(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .about(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .about(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.about(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.about(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereSortDescription({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['sortDescription']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .sortDescription(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map(
+            (e) => _$$OrganizationDtoImplPerFieldToJson.sortDescription(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$$OrganizationDtoImplPerFieldToJson.sortDescription(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereLogo({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['logo']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.logo(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.logo(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.logo(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .logo(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.logo(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .logo(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.logo(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.logo(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereWebsite({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['website']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.website(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .website(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.website(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .website(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .website(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .website(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.website(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.website(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereEmail({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['email']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.email(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson.email(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson.email(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .email(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .email(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .email(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.email(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.email(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereCreatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['createdAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .createdAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.createdAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.createdAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereUpdatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['updatedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .updatedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.updatedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.updatedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereCreatorId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['creatorId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .creatorId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.creatorId(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.creatorId(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereParentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['parentId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .parentId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.parentId(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.parentId(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrganizationDtoQuery whereChildrenIds({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$OrganizationDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrganizationDtoImplFieldMap['childrenIds']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isEqualTo as List<String>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isNotEqualTo as List<String>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isLessThan as List<String>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isLessThanOrEqualTo as List<String>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isGreaterThan as List<String>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrganizationDtoImplPerFieldToJson
+                .childrenIds(isGreaterThanOrEqualTo as List<String>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$$OrganizationDtoImplPerFieldToJson
+                    .childrenIds([arrayContains as String]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$$OrganizationDtoImplPerFieldToJson.childrenIds(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   OrganizationDtoQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -960,6 +1602,7 @@ class _$OrganizationDtoQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$OrganizationDtoQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -967,597 +1610,7 @@ class _$OrganizationDtoQuery
     );
   }
 
-  OrganizationDtoQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereName({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['name']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.name(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.name(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.name(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .name(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.name(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .name(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.name(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.name(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereAbout({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['about']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.about(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.about(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.about(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .about(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .about(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .about(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.about(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.about(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereSortDescription({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['sortDescription']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .sortDescription(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map(
-            (e) => _$$OrganizationDtoImplPerFieldToJson.sortDescription(e)),
-        whereNotIn: whereNotIn?.map(
-            (e) => _$$OrganizationDtoImplPerFieldToJson.sortDescription(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereLogo({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['logo']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.logo(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.logo(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.logo(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .logo(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.logo(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .logo(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.logo(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.logo(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereWebsite({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['website']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.website(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .website(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.website(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .website(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .website(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .website(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.website(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.website(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereEmail({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['email']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.email(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson.email(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson.email(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .email(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .email(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .email(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrganizationDtoImplPerFieldToJson.email(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.email(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereCreatedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['createdAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .createdAt(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.createdAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.createdAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereUpdatedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['updatedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .updatedAt(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.updatedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.updatedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereCreatorId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['creatorId']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .creatorId(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.creatorId(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.creatorId(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereParentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['parentId']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isEqualTo as String?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isNotEqualTo as String?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .parentId(isGreaterThanOrEqualTo as String?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.parentId(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrganizationDtoImplPerFieldToJson.parentId(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrganizationDtoQuery whereChildrenIds({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<String>? arrayContainsAny,
-  }) {
-    return _$OrganizationDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrganizationDtoImplFieldMap['childrenIds']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isEqualTo as List<String>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isNotEqualTo as List<String>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isLessThan as List<String>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isLessThanOrEqualTo as List<String>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isGreaterThan as List<String>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrganizationDtoImplPerFieldToJson
-                .childrenIds(isGreaterThanOrEqualTo as List<String>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$$OrganizationDtoImplPerFieldToJson
-                    .childrenIds([arrayContains as String]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$$OrganizationDtoImplPerFieldToJson.childrenIds(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   OrganizationDtoQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1630,6 +1683,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByName({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1703,6 +1757,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByAbout({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1776,6 +1831,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderBySortDescription({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1849,6 +1905,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByLogo({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1922,6 +1979,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByWebsite({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1995,6 +2053,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByEmail({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2068,6 +2127,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByCreatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2141,6 +2201,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByUpdatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2214,6 +2275,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByCreatorId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2287,6 +2349,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByParentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2360,6 +2423,7 @@ class _$OrganizationDtoQuery
     );
   }
 
+  @override
   OrganizationDtoQuery orderByChildrenIds({
     bool descending = false,
     Object? startAt = _sentinel,

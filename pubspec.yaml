@@ -8,48 +8,59 @@ environment:
 
 dependencies:
   another_flushbar: ^1.12.30
-  auth_buttons: ^3.0.2
-  bloc: ^8.1.2
-  cloud_firestore: ^4.14.0
-  cloud_firestore_odm: ^1.0.0-dev.82
-  fast_immutable_collections: ^10.1.0
-  firebase_auth: ^4.16.0
-  firebase_core: ^2.24.2
-  firebase_storage: ^11.6.0
+  auth_buttons: ^3.0.3
+  bloc: ^8.1.4
+  cloud_firestore: ^5.0.2
+  cloud_firestore_odm:
+    git:
+      url: https://github.com/AmanSikarwar/firestoreodm-flutter.git
+      ref: main
+      path: packages/cloud_firestore_odm
+  fast_immutable_collections: ^10.2.4
+  firebase_auth: ^5.1.1
+  firebase_core: ^3.1.1
+  firebase_storage: ^12.1.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.3
-  flutter_hooks: ^0.20.4
+  flutter_bloc: ^8.1.6
+  flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
   fpdart: ^1.1.0
   freezed_annotation: ^2.4.1
-  get_it: ^7.6.7
-  go_router: ^13.1.0
+  get_it: ^7.7.0
+  go_router: ^14.2.0
   google_nav_bar: ^5.0.6
   google_sign_in: ^6.2.1
-  injectable: ^2.3.2
-  intl: ^0.18.1
-  json_annotation: ^4.8.1
-  url_launcher: ^6.2.4
-  uuid: ^4.3.3
+  injectable: ^2.4.2
+  intl: ^0.19.0
+  json_annotation: ^4.9.0
+  url_launcher: ^6.3.0
+  uuid: ^4.4.0
 
 dev_dependencies:
-  bloc_test: ^9.1.5
-  build_runner: ^2.4.8
-  cloud_firestore_odm_generator: ^1.0.0-dev.82
-  flutter_launcher_icons:
+  bloc_test: ^9.1.7
+  build_runner: ^2.4.11
+  cloud_firestore_odm_generator:
     git:
-      url: https://github.com/fluttercommunity/flutter_launcher_icons.git
-      ref: master
+      url: https://github.com/AmanSikarwar/firestoreodm-flutter.git
+      ref: main
+      path: packages/cloud_firestore_odm_generator
+  # flutter_launcher_icons:
+  #   git:
+  #     url: https://github.com/fluttercommunity/flutter_launcher_icons.git
+  #     ref: master
   flutter_test:
     sdk: flutter
-  freezed: ^2.4.6
-  go_router_builder: ^2.4.1
-  injectable_generator: ^2.4.1
-  json_serializable: ^6.7.1
-  mocktail: ^1.0.3
-  very_good_analysis: ^5.1.0
+  freezed: ^2.5.3
+  go_router_builder: ^2.7.0
+  injectable_generator: ^2.6.1
+  json_serializable: ^6.8.0
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
+
+dependency_overrides:
+  meta: ^1.15.0
 
 flutter:
   uses-material-design: true

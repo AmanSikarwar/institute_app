@@ -490,6 +490,182 @@ abstract class EventDtoQuery
   @override
   EventDtoQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  EventDtoQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereTitle({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereStart({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereEnd({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereUpdatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereCreatorId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereOrganizationIds({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereAttendeeIds({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereBannerUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  EventDtoQuery whereRsVpUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -511,181 +687,16 @@ abstract class EventDtoQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   EventDtoQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     EventDtoDocumentSnapshot? startAtDocument,
     EventDtoDocumentSnapshot? endAtDocument,
     EventDtoDocumentSnapshot? endBeforeDocument,
     EventDtoDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  EventDtoQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  EventDtoQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EventDtoQuery whereTitle({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EventDtoQuery whereDescription({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EventDtoQuery whereStart({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  EventDtoQuery whereEnd({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  EventDtoQuery whereCreatedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  EventDtoQuery whereUpdatedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  EventDtoQuery whereCreatorId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EventDtoQuery whereOrganizationIds({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
-  });
-  EventDtoQuery whereAttendeeIds({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
-  });
-  EventDtoQuery whereBannerUrl({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  });
-  EventDtoQuery whereRsVpUrl({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
   });
 
   EventDtoQuery orderByDocumentId({
@@ -876,8 +887,618 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
+  EventDtoQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereTitle({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['title']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.title(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.title(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.title(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson.title(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.title(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .title(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.title(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.title(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereDescription({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['description']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.description(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.description(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.description(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .description(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.description(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .description(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.description(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$EventDtoImplPerFieldToJson.description(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereStart({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['start']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.start(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.start(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.start(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .start(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.start(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .start(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.start(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.start(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereEnd({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['end']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.end(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.end(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.end(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson.end(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.end(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .end(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.end(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.end(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereCreatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['createdAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.createdAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.createdAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.createdAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .createdAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.createdAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .createdAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.createdAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.createdAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereUpdatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['updatedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.updatedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.updatedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.updatedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .updatedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.updatedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .updatedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.updatedAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.updatedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereCreatorId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['creatorId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.creatorId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.creatorId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.creatorId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .creatorId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.creatorId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .creatorId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.creatorId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.creatorId(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereOrganizationIds({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['organizationIds']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isEqualTo as List<String>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isNotEqualTo as List<String>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isLessThan as List<String>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isLessThanOrEqualTo as List<String>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isGreaterThan as List<String>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .organizationIds(isGreaterThanOrEqualTo as List<String>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$$EventDtoImplPerFieldToJson
+                    .organizationIds([arrayContains as String]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$$EventDtoImplPerFieldToJson.organizationIds(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereAttendeeIds({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['attendeeIds']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isEqualTo as List<String>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isNotEqualTo as List<String>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isLessThan as List<String>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isLessThanOrEqualTo as List<String>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isGreaterThan as List<String>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .attendeeIds(isGreaterThanOrEqualTo as List<String>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$$EventDtoImplPerFieldToJson
+                    .attendeeIds([arrayContains as String]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$$EventDtoImplPerFieldToJson.attendeeIds(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereBannerUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['bannerUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .bannerUrl(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .bannerUrl(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.bannerUrl(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.bannerUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EventDtoQuery whereRsVpUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EventDtoQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$EventDtoImplFieldMap['rsVpUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .rsVpUrl(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$EventDtoImplPerFieldToJson
+                .rsVpUrl(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.rsVpUrl(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.rsVpUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   EventDtoQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -941,6 +1562,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$EventDtoQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -948,576 +1570,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
-  EventDtoQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereTitle({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['title']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.title(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.title(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.title(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson.title(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.title(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .title(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.title(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.title(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereDescription({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['description']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.description(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.description(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.description(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .description(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.description(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .description(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.description(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$EventDtoImplPerFieldToJson.description(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereStart({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['start']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.start(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.start(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.start(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .start(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.start(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .start(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.start(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.start(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereEnd({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['end']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.end(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.end(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.end(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson.end(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.end(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .end(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.end(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.end(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereCreatedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['createdAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.createdAt(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.createdAt(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.createdAt(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .createdAt(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.createdAt(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .createdAt(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.createdAt(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.createdAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereUpdatedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['updatedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.updatedAt(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.updatedAt(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.updatedAt(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .updatedAt(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.updatedAt(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .updatedAt(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.updatedAt(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.updatedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereCreatorId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['creatorId']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.creatorId(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.creatorId(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.creatorId(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .creatorId(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.creatorId(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .creatorId(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.creatorId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.creatorId(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereOrganizationIds({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<String>? arrayContainsAny,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['organizationIds']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isEqualTo as List<String>)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isNotEqualTo as List<String>)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isLessThan as List<String>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isLessThanOrEqualTo as List<String>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isGreaterThan as List<String>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .organizationIds(isGreaterThanOrEqualTo as List<String>)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$$EventDtoImplPerFieldToJson
-                    .organizationIds([arrayContains as String]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$$EventDtoImplPerFieldToJson.organizationIds(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereAttendeeIds({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<String>? arrayContainsAny,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['attendeeIds']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isEqualTo as List<String>)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isNotEqualTo as List<String>)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isLessThan as List<String>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isLessThanOrEqualTo as List<String>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isGreaterThan as List<String>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .attendeeIds(isGreaterThanOrEqualTo as List<String>)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$$EventDtoImplPerFieldToJson
-                    .attendeeIds([arrayContains as String]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$$EventDtoImplPerFieldToJson.attendeeIds(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereBannerUrl({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['bannerUrl']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isEqualTo as String?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isNotEqualTo as String?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .bannerUrl(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.bannerUrl(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .bannerUrl(isGreaterThanOrEqualTo as String?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.bannerUrl(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.bannerUrl(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EventDtoQuery whereRsVpUrl({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  }) {
-    return _$EventDtoQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$EventDtoImplFieldMap['rsVpUrl']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isEqualTo as String?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isNotEqualTo as String?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .rsVpUrl(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$EventDtoImplPerFieldToJson.rsVpUrl(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$EventDtoImplPerFieldToJson
-                .rsVpUrl(isGreaterThanOrEqualTo as String?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$EventDtoImplPerFieldToJson.rsVpUrl(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$EventDtoImplPerFieldToJson.rsVpUrl(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   EventDtoQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1590,6 +1643,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByTitle({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1662,6 +1716,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByDescription({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1735,6 +1790,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByStart({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1807,6 +1863,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByEnd({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1879,6 +1936,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByCreatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1951,6 +2009,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByUpdatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2023,6 +2082,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByCreatorId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2095,6 +2155,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByOrganizationIds({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2168,6 +2229,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByAttendeeIds({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2241,6 +2303,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByBannerUrl({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2313,6 +2376,7 @@ class _$EventDtoQuery extends QueryReference<EventDto, EventDtoQuerySnapshot>
     );
   }
 
+  @override
   EventDtoQuery orderByRsVpUrl({
     bool descending = false,
     Object? startAt = _sentinel,
