@@ -23,8 +23,11 @@ class SplashPage extends StatelessWidget {
               unauthenticated: (_) {
                 Future.delayed(
                   const Duration(milliseconds: 200),
-                  () => context
-                      .pushReplacement(const LoginRoute().location),
+                  () {
+                    if (context.mounted) {
+                      context.pushReplacement(const LoginRoute().location);
+                    }
+                  },
                 );
               },
               orElse: () {},
@@ -36,8 +39,7 @@ class SplashPage extends StatelessWidget {
             state.maybeMap(
               loadFailure: (value) {
                 if (value.userFailure is NotFound) {
-                  context
-                      .pushReplacement(const ProfileRoute().location);
+                  context.pushReplacement(const ProfileRoute().location);
                 }
               },
               loadSuccess: (value) =>

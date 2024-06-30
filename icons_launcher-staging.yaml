@@ -1,0 +1,17 @@
+icons_launcher:
+  image_path: "assets/launcher_icons/staging/ic_launcher_staging.png"
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/launcher_icons/staging/ic_launcher_staging.png"
+      adaptive_background_image: "assets/launcher_icons/staging/ic_launcher_staging_background.png"
+      adaptive_foreground_image: "assets/launcher_icons/staging/ic_launcher_staging_foreground.png"
+      adaptive_monochrome_image: "assets/launcher_icons/staging/ic_launcher_staging_monochrome.png"
+      adaptive_round_image: "assets/launcher_icons/staging/ic_launcher_staging_round.png"
+    ios:
+      enable: true
+      image_path: "assets/launcher_icons/staging/ic_launcher_staging.png"
+    web:
+      enable: true
+      image_path: "assets/launcher_icons/staging/ic_launcher_staging.png"
+      favicon_path: "assets/launcher_icons/staging/ic_launcher_staging_round.png"

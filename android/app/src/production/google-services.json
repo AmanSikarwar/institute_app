@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "3410474415-0ee0pi8lga0nun80ktee60ju71h7v0h0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app",
+            "certificate_hash": "01d39700b36d7e4a553cd560c27a64b7c92a0e20"
+          }
+        },
+        {
           "client_id": "3410474415-rte3tnc7uuakosnsrqh67436osoe725k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -14,6 +14,46 @@
       },
       "oauth_client": [
         {
+          "client_id": "183780289416-adjen5bu46bctn8hrpko9f8ac3dgdhod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app.dev",
+            "certificate_hash": "c12143e44f143e85f388d25455ffc7f306bf6566"
+          }
+        },
+        {
+          "client_id": "183780289416-c6199nr0b3sn8a3a594d8abrp8riejno.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app.dev",
+            "certificate_hash": "ea26ca9605b1cdb8367b2cfa97a76a4d21bd522e"
+          }
+        },
+        {
+          "client_id": "183780289416-gc8jdeofhm5pignkimt258h3lmgfvlhi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app.dev",
+            "certificate_hash": "6df5c982a0c5018b4d186a3108d5c872c8aef717"
+          }
+        },
+        {
+          "client_id": "183780289416-o8vr40tmcjkqic9sq0m4p71rn0av8irr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app.dev",
+            "certificate_hash": "01d39700b36d7e4a553cd560c27a64b7c92a0e20"
+          }
+        },
+        {
+          "client_id": "183780289416-qdmf37aevf1ie86qm8gs765nkj1h12rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app.dev",
+            "certificate_hash": "c80ee61063b5dc3adffd4777acc4e8c49c1eadf6"
+          }
+        },
+        {
           "client_id": "183780289416-nnut0s2tb4rd9ibu3g8d7lg79edde4iu.apps.googleusercontent.com",
           "client_type": 3
         }

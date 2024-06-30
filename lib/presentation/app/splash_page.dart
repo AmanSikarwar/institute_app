@@ -127,28 +127,25 @@ class SplashPage extends StatelessWidget {
                             const AuthEvent.signInWithGoogleRequested(),
                           ),
                           style: ButtonStyle(
-                            elevation:
-                                const MaterialStatePropertyAll(20),
-                            shadowColor: const MaterialStatePropertyAll(
+                            elevation: const WidgetStatePropertyAll(20),
+                            shadowColor: const WidgetStatePropertyAll(
                               Color.fromARGB(255, 203, 214, 255),
                             ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            shape:
+                                WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            backgroundColor:
-                                const MaterialStatePropertyAll(
+                            backgroundColor: const WidgetStatePropertyAll(
                               Color.fromARGB(255, 31, 65, 187),
                             ),
-                            fixedSize: const MaterialStatePropertyAll(
+                            fixedSize: const WidgetStatePropertyAll(
                               Size(165, 60),
                             ),
                           ),
                           child: Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
                                 'Sign  In',
@@ -156,8 +153,7 @@ class SplashPage extends StatelessWidget {
                                   fontSize: 20,
                                   fontFamily: 'poppins',
                                   fontWeight: FontWeight.w600,
-                                  color:
-                                      Color.fromRGBO(255, 255, 255, 1),
+                                  color: Color.fromRGBO(255, 255, 255, 1),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -172,28 +168,23 @@ class SplashPage extends StatelessWidget {
                         const SizedBox(height: 8),
                         Center(
                           child: ElevatedButton(
-                            onPressed: () =>
-                                BlocProvider.of<AuthBloc>(context)
-                                    .add(const AuthEvent.signedOut()),
+                            onPressed: () => BlocProvider.of<AuthBloc>(context)
+                                .add(const AuthEvent.signedOut()),
                             style: ButtonStyle(
-                              elevation:
-                                  const MaterialStatePropertyAll(20),
-                              shadowColor:
-                                  const MaterialStatePropertyAll(
+                              elevation: const WidgetStatePropertyAll(20),
+                              shadowColor: const WidgetStatePropertyAll(
                                 Color.fromARGB(255, 203, 214, 255),
                               ),
-                              shape: MaterialStateProperty.all<
+                              shape: WidgetStatePropertyAll<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              backgroundColor:
-                                  const MaterialStatePropertyAll(
+                              backgroundColor: const WidgetStatePropertyAll(
                                 Color.fromARGB(255, 31, 65, 187),
                               ),
-                              fixedSize: const MaterialStatePropertyAll(
+                              fixedSize: const WidgetStatePropertyAll(
                                 Size(165, 60),
                               ),
                             ),

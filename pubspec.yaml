@@ -1,6 +1,6 @@
 name: institute_app
 description: An app for the people of IIT Mandi
-version: 1.0.0+1
+version: 0.0.1+1
 publish_to: none
 
 environment:
@@ -46,14 +46,11 @@ dev_dependencies:
       url: https://github.com/AmanSikarwar/firestoreodm-flutter.git
       ref: main
       path: packages/cloud_firestore_odm_generator
-  # flutter_launcher_icons:
-  #   git:
-  #     url: https://github.com/fluttercommunity/flutter_launcher_icons.git
-  #     ref: master
   flutter_test:
     sdk: flutter
   freezed: ^2.5.3
   go_router_builder: ^2.7.0
+  icons_launcher: ^2.1.7
   injectable_generator: ^2.6.1
   json_serializable: ^6.8.0
   mocktail: ^1.0.4

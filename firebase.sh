@@ -13,7 +13,8 @@ androidPackageName=$4
 for prefix in "Debug" "Release" "Profile"; do
  echo 'yes' | flutterfire configure \
    --project="$project" \
-   --out=lib/entrypoints/"$configuration"/firebase_options.dart \
+   --platforms=ios,android,web \
+   --out=lib/firebase/"$configuration"/firebase_options.dart \
    --android-out=/android/app/src/"$configuration"/google-services.json \
    --ios-bundle-id="$iosBundleId" \
    --android-package-name="$androidPackageName" \

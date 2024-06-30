@@ -71,7 +71,7 @@ class ProfileForm extends StatelessWidget {
                             style: TextStyle(
                               color: Theme.of(context)
                                   .colorScheme
-                                  .onBackground
+                                  .onSurface
                                   .withOpacity(0.5),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -108,8 +108,7 @@ class BioFormField extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController();
     return BlocBuilder<UserFormBloc, UserFormState>(
-      buildWhen: (previous, current) =>
-          previous.user.bio != current.user.bio,
+      buildWhen: (previous, current) => previous.user.bio != current.user.bio,
       builder: (context, state) {
         return TextFormField(
           controller: textEditingController,
